@@ -1,12 +1,16 @@
+import React from 'react'
 import Header from './Header.js'
-import Footer from './Footer.js'
+import Container from '@material-ui/core/Container'
+
 
 const Layout = props => (
-    <div>
+    // With React.Fragment we don't need div wrapper
+    <React.Fragment>
         <Header/>
-        {props.children}
-        <Footer/>
-    </div>
+        <Container>
+            {props.children}
+        </Container>
+    </React.Fragment>
 );
 
 export default Layout
