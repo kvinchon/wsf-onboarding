@@ -1,6 +1,11 @@
+import Layout from '../components/MyLayout.js'
+// import Link from 'next/link'
+
 const Index = () => (
     <div>
-      <p>Hello World</p>
+      <Layout>
+        <p>Hello World</p>
+      </Layout>
     </div>
   );
   
