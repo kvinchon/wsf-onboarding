@@ -9,10 +9,11 @@ import React from 'react'
 import SignUp from '../components/SignUp.js'
 import Button from '@material-ui/core/Button';
 import CompleteProfil from '../components/CompleteProfil.js'
+import Plan from '../components/Plan.js'
 
 const useStyles = makeStyles(theme => ({
   main: {
-    width: 600,
+    width: 900,
     margin: 'auto',
   },
   papper: {
@@ -33,7 +34,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function getSteps() {
-  return ['Create your account', 'Complete your profile', 'Step 3'];
+  return ['Create your account', 'Complete your profile', 'Select a plan'];
 }
 
 function getStepContent(step) {
@@ -45,8 +46,8 @@ function getStepContent(step) {
       // Complete your profil page
       return <CompleteProfil/>;
     case 2:
-      // Complete your profil page
-      return "ok";
+      // Plan page
+      return <Plan/>;
     default:
       throw new Error('Unknown step');
   }
