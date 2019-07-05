@@ -7,11 +7,13 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import React from 'react'
 import SignUp from '../components/SignUp.js'
+import Button from '@material-ui/core/Button';
 import CompleteProfil from '../components/CompleteProfil.js'
+import Plan from '../components/Plan.js'
 
 const useStyles = makeStyles(theme => ({
   main: {
-    width: 600,
+    width: 900,
     margin: 'auto',
   },
   papper: {
@@ -19,9 +21,21 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(3),
     padding: theme.spacing(3),
   },
+  root: {
+    width: '90%',
+  },
+  button: {
+    marginRight: theme.spacing(1),
+  },
+  instructions: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+  },
 }));
 
-const steps = ['Create your account', 'Complete your profile', 'Step 3'];
+function getSteps() {
+  return ['Create your account', 'Complete your profile', 'Select a plan'];
+}
 
 function getStepContent(step) {
   switch (step) {
@@ -31,6 +45,9 @@ function getStepContent(step) {
     case 1:
       // Complete your profil page
       return <CompleteProfil/>;
+    case 2:
+      // Plan page
+      return <Plan/>;
     default:
       throw new Error('Unknown step');
   }
@@ -38,7 +55,18 @@ function getStepContent(step) {
 
 export default function Index(){
   const classes = useStyles();
-  const [activeStep] = React.useState(0);
+  const [activeStep, setActiveStep] = React.useState(0);
+  const [skipped, setSkipped] = React.useState(new Set());
+  const steps = getSteps();
+
+  function handleNext() {
+    setActiveStep(prevActiveStep => prevActiveStep + 1);
+  }
+
+  function handleBack() {
+    setActiveStep(prevActiveStep => prevActiveStep - 1);
+  }
+  
 
   return (
     <Layout>
@@ -55,8 +83,23 @@ export default function Index(){
             ))}
           </Stepper>
           <div>
-            {/* Step Content */}
-            {getStepContent(activeStep)}
+          <div>
+            <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+            <div>
+              <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
+                Back
+              </Button>
+
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleNext}
+                className={classes.button}
+              >
+                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+              </Button>
+            </div>
+          </div>
           </div>
         </Papper>
       </main>
