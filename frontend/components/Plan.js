@@ -11,19 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Layout from './MyLayout.js'
 
-function MadeWithLove() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Built with love by the '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Material-UI
-      </Link>
-      {' team.'}
-    </Typography>
-  );
-}
 const useStyles = makeStyles(theme => ({
   '@global': {
     body: {
@@ -129,7 +117,7 @@ export default function Plan() {
   const classes = useStyles();
 
   return (
-      <Layout>
+    <React.Fragment>
       <CssBaseline />
       {/* Hero unit */}
       <Container maxWidth="sm" component="main" className={classes.heroContent}>
@@ -179,6 +167,6 @@ export default function Plan() {
           ))}
         </Grid>
       </Container>
-    </Layout>
+      </React.Fragment>
   );
 }
