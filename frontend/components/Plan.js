@@ -11,6 +11,28 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+// import axios from 'axios'
+
+const axios = require('axios');
+
+console.log(axios)
+
+axios({
+  url: 'http://localhost:4000/',
+  method: 'post',
+  data: {
+    query: `
+      query {
+        accounts {
+          name
+          }
+        }
+      `
+  }
+}).then((result) => {
+  console.log(result.data)
+});
+
 
 const useStyles = makeStyles(theme => ({
   '@global': {

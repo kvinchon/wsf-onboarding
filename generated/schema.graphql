@@ -2,6 +2,20 @@
 ### Do not make changes to this file directly
 
 
+"""The account type"""
+type Account {
+  email: String
+  name: String
+}
+
+"""The product type"""
+type Product {
+  id: String
+  name: String
+}
+
 type Query {
-  hello(name: String): String!
+  accountByEmail(email: String!): Account!
+  accounts(name: String): [Account!]!
+  products: [Product!]!
 }

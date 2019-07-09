@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.0.0",
+    "env": "0.0.2",
     "esm": "^3.2.25",
     "graphql": "^14.4.1",
     "graphql-yoga": "^1.18.0",

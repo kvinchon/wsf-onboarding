@@ -98,11 +98,11 @@ export default function SignUp() {
                     {values.showPassword ? <VisibilityOff /> : <Visibility />}
             </IconButton>
         </Grid>
-        <Grid item xs={12} item>
+        {/* <Grid item xs={12} item>
             <Button fullWidth variant="contained" color="primary" >
                 Continue
             </Button>
-        </Grid>
+        </Grid> */}
       </Grid>
     </form>
   );

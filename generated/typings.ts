@@ -19,6 +19,14 @@ export interface NexusGenEnums {
 }
 
 export interface NexusGenRootTypes {
+  Account: { // root type
+    email?: string | null; // String
+    name?: string | null; // String
+  }
+  Product: { // root type
+    id?: string | null; // String
+    name?: string | null; // String
+  }
   Query: {};
   String: string;
   Int: number;
@@ -31,14 +39,27 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
 }
 
 export interface NexusGenFieldTypes {
+  Account: { // field return type
+    email: string | null; // String
+    name: string | null; // String
+  }
+  Product: { // field return type
+    id: string | null; // String
+    name: string | null; // String
+  }
   Query: { // field return type
-    hello: string; // String!
+    accountByEmail: NexusGenRootTypes['Account']; // Account!
+    accounts: NexusGenRootTypes['Account'][]; // [Account!]!
+    products: NexusGenRootTypes['Product'][]; // [Product!]!
   }
 }
 
 export interface NexusGenArgTypes {
   Query: {
-    hello: { // args
+    accountByEmail: { // args
+      email: string; // String!
+    }
+    accounts: { // args
       name?: string | null; // String
     }
   }
@@ -49,7 +70,7 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Query";
+export type NexusGenObjectNames = "Account" | "Product" | "Query";
 
 export type NexusGenInputNames = never;
 
