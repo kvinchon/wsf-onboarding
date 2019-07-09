@@ -1,5 +1,6 @@
 import { queryType, stringArg, makeSchema, objectType } from "nexus";
 import { GraphQLServer } from "graphql-yoga";
+require('dotenv').config()
 
 const db = require('knex')({
 	client: 'pg',
